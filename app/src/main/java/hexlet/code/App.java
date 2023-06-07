@@ -16,6 +16,8 @@ public class App implements Runnable {
     private String filePath1;
     @Parameters(index = "1", description = "The name of file to be compared.")
     private String filePath2;
+    @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
+    private String format;
 
 //    @Option(names = {"-h",  "--help"}, description = "Show this help message and exit.",
 //            names = {"-V", "--version"}, description = "Print version information and exit.")
