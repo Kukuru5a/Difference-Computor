@@ -7,9 +7,6 @@ import java.util.*;
 
 public class Differ   {
 
-
-
-
     public static Map<String, Map<String, Object>> getDiff (Map<String, Object> data1,
                                                             Map<String, Object> data2) {
         Map<String, Map<String, Object>> resMap = new TreeMap<>();
@@ -31,12 +28,24 @@ public class Differ   {
         }
         return resMap;
     }
+    private static boolean isEqual (Object value1, Object value2) {
+        var res = false;
+        if ((value1 != null && value2 != null) && value1.equals(value2)) {
+            res = true;
+        } else {
+            res = value1 == null && value2 == null;
+        }
+        return res;
+    }
+
+
     public static String generate (String n, String m, String format) throws Exception {
         var data1 = getData(n);
         var data2 = getData(m);
         var res = getDiff(data1, data2);
-
-        return res.toString();
+//        return Formatter.jsonFormat(res);
+        var result = Formatter.format(res, format);
+        return result;
     }
 
     public static Map<String, Object> getData(String content) throws Exception { // переделать json в path достать контент
