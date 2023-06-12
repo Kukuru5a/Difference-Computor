@@ -4,52 +4,38 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 
+public class Differ {
+    public static Map<String, Object> getData(String content) throws Exception {
+        var res = Files.readString(Paths.get(content));
+        return Parser.parse(res);
+    }
 
-public class Differ   {
-
-    public static Map<String, Map<String, Object>> getDiff (Map<String, Object> data1,
-                                                            Map<String, Object> data2) {
-        Map<String, Map<String, Object>> resMap = new TreeMap<>();
+    public static Map<String, Object> getDiff(Map<String, Object> data1,
+                                              Map<String, Object> data2) {
+        Map<String, Object> resMap = new TreeMap<>();
         Set<String> keySet = new TreeSet<>(data1.keySet());
         keySet.addAll(data2.keySet());
-
-        for (var key : keySet) {
-            Map<String, Object> tMap = new TreeMap<>();
-            if (!data1.containsKey(key)) {
-                tMap.put("+", data2.get(key));
-            } else if (!data2.containsKey(key)) {
-                tMap.put("-", data1.get(key));
-            } else {
-                if (data1.get(key).equals(data2.get(key))) {
-                    tMap.put("", data1);
+        Map<String, Object> tm = new TreeMap<>();
+        for (Map.Entry<String, Object> ss : data1.entrySet()) {
+            for (Map.Entry<String, Object> rr : data2.entrySet()) {
+                if (ss.getValue().equals(rr.getValue())) {
+                    tm.put(" ".concat(ss.getKey()), ss.getValue());
+                } else if (!ss.getValue().equals(rr.getValue())) {
+                    tm.put("-".concat(ss.getKey()), ss.getValue());
+                    tm.put("+".concat(rr.getKey()), rr.getValue());
                 }
             }
-            resMap.put(key, tMap);
+            resMap.putAll(tm);
         }
         return resMap;
     }
-    private static boolean isEqual (Object value1, Object value2) {
-        var res = false;
-        if ((value1 != null && value2 != null) && value1.equals(value2)) {
-            res = true;
-        } else {
-            res = value1 == null && value2 == null;
-        }
+
+    public static String generate(String dataFile1, String dataFile2) throws Exception {
+        var dat1 = getData(dataFile1);
+        var dat2 = getData(dataFile2);
+        var difference = getDiff(dat1, dat2);
+        var res = Formatter.format(difference, "json");
         return res;
-    }
 
-
-    public static String generate (String n, String m, String format) throws Exception {
-        var data1 = getData(n);
-        var data2 = getData(m);
-        var res = getDiff(data1, data2);
-//        return Formatter.jsonFormat(res);
-        var result = Formatter.format(res, format);
-        return result;
-    }
-
-    public static Map<String, Object> getData(String content) throws Exception { // переделать json в path достать контент
-        String path = Files.readString(Paths.get(content));
-        return Parser.parse(path);
     }
 }
