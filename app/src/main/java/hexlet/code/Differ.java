@@ -10,31 +10,43 @@ public class Differ {
         return Parser.parse(res);
     }
 
-    public static Map<String, Object> getDiff(Map<String, Object> data1,
-                                              Map<String, Object> data2) {
-        Map<String, Object> resMap = new TreeMap<>();
+    public static List<Map<String, Object>> getDiff(Map<String, Object> data1,
+                                                    Map<String, Object> data2) {
+        List<Map<String, Object>> resList = new ArrayList<>();
         Set<String> keySet = new TreeSet<>(data1.keySet());
         keySet.addAll(data2.keySet());
-        Map<String, Object> tm = new TreeMap<>();
-        for (Map.Entry<String, Object> ss : data1.entrySet()) {
-            for (Map.Entry<String, Object> rr : data2.entrySet()) {
-                if (ss.getValue().equals(rr.getValue())) {
-                    tm.put(" ".concat(ss.getKey()), ss.getValue());
-                } else if (!ss.getValue().equals(rr.getValue())) {
-                    tm.put("-".concat(ss.getKey()), ss.getValue());
-                    tm.put("+".concat(rr.getKey()), rr.getValue());
-                }
+
+        for (String key : keySet) {
+            Map<String, Object> tm = new TreeMap<>();
+
+            if (!data1.containsKey(key)) {
+                tm.put("key", key);
+                tm.put("new value", data2.get(key));
+                tm.put("status", "added");
+            } else if (!data2.containsKey(key)) {
+                tm.put("key", key);
+                tm.put("old value", data1.get(key));
+                tm.put("status", "removed");
+            } else if (data1.get(key).equals(data2.get(key))) {
+                tm.put("key", key);
+                tm.put("old value", data1.get(key));
+                tm.put("status", "unchanged");
+            } else {
+                tm.put("key", key);
+                tm.put("old value", data1.get(key));
+                tm.put("new value", data2.get(key));
+                tm.put("status", "changed");
             }
-            resMap.putAll(tm);
+            resList.add(tm);
         }
-        return resMap;
+        return resList;
     }
 
     public static String generate(String dataFile1, String dataFile2) throws Exception {
         var dat1 = getData(dataFile1);
         var dat2 = getData(dataFile2);
         var difference = getDiff(dat1, dat2);
-        var res = Formatter.format(difference, "json");
+        var res = Formatter.format(difference, "stylish");
         return res;
 
     }
