@@ -26,4 +26,5 @@ To start the App, write - ./build/install/app/bin/app
 
 --------
 ##### Checking the stylish json files
-https://asciinema.org/a/WA4Tf6x8VvRRmxZycnw1QHks0
+[https://asciinema.org/a/WA4Tf6x8VvRRmxZycnw1QHks0
+](https://asciinema.org/a/bwcPmU6ZBErHtTrhNJPrT2HDk)https://asciinema.org/a/bwcPmU6ZBErHtTrhNJPrT2HDk
