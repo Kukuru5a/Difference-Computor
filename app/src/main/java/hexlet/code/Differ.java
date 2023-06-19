@@ -23,13 +23,13 @@ public class Differ {
                 tm.put("key", key);
                 tm.put("new value", data2.get(key));
                 tm.put("status", "added");
-            } else if (!data2.containsKey(key)) {
+            }else if (!data2.containsKey(key)) {
                 tm.put("key", key);
                 tm.put("old value", data1.get(key));
                 tm.put("status", "removed");
             } else if (data1.get(key).equals(data2.get(key))) {
                 tm.put("key", key);
-                tm.put("old value", data1.get(key));
+                tm.put("value", data2.get(key));
                 tm.put("status", "unchanged");
             } else {
                 tm.put("key", key);
@@ -42,12 +42,14 @@ public class Differ {
         return resList;
     }
 
-    public static String generate(String dataFile1, String dataFile2) throws Exception {
+    public static String generate(String dataFile1, String dataFile2, String format) throws Exception {
         var dat1 = getData(dataFile1);
         var dat2 = getData(dataFile2);
         var difference = getDiff(dat1, dat2);
-        var res = Formatter.format(difference, "stylish");
+        var res = Formatter.format(difference, format);
         return res;
-
+    }
+    public static String generate(String dataFile1, String dataFile2) throws Exception {
+        return generate(dataFile1, dataFile2, "stylish");
     }
 }

@@ -19,7 +19,7 @@ public class App implements Callable<String> {
 
     @Override
     public String call() throws Exception {
-        var difference = Differ.generate(filePath1, filePath2);
+        var difference = Differ.generate(filePath1, filePath2, "stylish");
         System.out.println(difference);
         return difference;
     }
