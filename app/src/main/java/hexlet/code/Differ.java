@@ -3,13 +3,21 @@ package hexlet.code;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.zip.DataFormatException;
 
 public class Differ {
     public static Map<String, Object> getData(String content) throws Exception {
         var res = Files.readString(Paths.get(content));
-        return Parser.parse(res);
+        var ext = getExtension(content);
+        return Parser.parse(res, ext);
     }
-
+    private static String getExtension(String path) throws Exception {
+        if (!path.contains(".")) {
+            throw new DataFormatException();
+        }
+        int indexOfLastDot = path.lastIndexOf(".") + 1;
+        return path.substring(indexOfLastDot, path.length()).toLowerCase();
+    }
     public static List<Map<String, Object>> getDiff(Map<String, Object> data1,
                                                     Map<String, Object> data2) {
         List<Map<String, Object>> resList = new ArrayList<>();
