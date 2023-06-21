@@ -21,9 +21,9 @@ public class App implements Callable<Integer> {
     @Override
     public Integer call() throws Exception {
 
-            var difference = Differ.generate(filePath1, filePath2, format);
-            System.out.println(difference);
-            return ERROR_CODE;
+        var difference = Differ.generate(filePath1, filePath2, format);
+        System.out.println(difference);
+        return ERROR_CODE;
     }
 
     public static void main(String[] args) {

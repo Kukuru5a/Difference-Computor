@@ -1,5 +1,6 @@
 package hexlet.code;
 
+import hexlet.code.Format.Plain;
 import hexlet.code.Format.Stylish;
 import hexlet.code.Format.Yaml;
 
@@ -11,21 +12,28 @@ public class Formatter {
 
 
     public static String format(List<Map<String, Object>> dataFile, String fileFormat) throws IOException {
-        String res = "";
-        switch (fileFormat) {
-            case "stylish" -> res = Stylish.fromStylish(dataFile);
-            case "yaml" -> res = Yaml.fromYaml(dataFile);
-            default -> res = "Format of '" + dataFile + "' is not supported.";
+        String res;
+        if (fileFormat.equals("plain")) {
+            res = Plain.fromPlain(dataFile);
+        } else if (fileFormat.equals("yaml")) {
+            res = Yaml.fromYaml(dataFile);
+        } else if (fileFormat.equals("stylish")) {
+            res = Stylish.fromStylish(dataFile);
+        } else {
+            res = "Format of '" + dataFile + "' is not supported.";
         }
-
         return res;
     }
 
-    public static void main(String[] args) throws Exception {
-        String content1 = "src/test/resources/file1.yml";
-        String content2 = "src/test/resources/file2.yml";
+    public static String format(List<Map<String, Object>> dataFile) throws IOException {
+        return format(dataFile, "stylish");
+    }
 
-        String generatedData = Differ.generate(content1, content2, "yaml");
+    public static void main(String[] args) throws Exception {
+        String content1 = "src/test/resources/file_1.json";
+        String content2 = "src/test/resources/file_2.json";
+
+        String generatedData = Differ.generate(content1, content2, "stylish");
         System.out.println(generatedData);
     }
 }
