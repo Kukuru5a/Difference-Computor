@@ -51,8 +51,8 @@ class testApp {
     }
     @Test
     void appTest3 () throws Exception {
-        content1 = "src/test/resources/file_1.json";
-        content2 = "src/test/resources/file_2.json";
+        content1 = "src/test/resources/file3.json";
+        content2 = "src/test/resources/file4.json";
         String actual = Differ.generate(content1,content2);
         String expected = "{\n" +
                 "    chars1: [a, b, c]\n" +

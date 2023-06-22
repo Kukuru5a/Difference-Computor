@@ -24,9 +24,9 @@ public class DiffBuilder {
                 tm.put("key", key);
                 tm.put("old value", data1.get(key));
                 tm.put("status", "removed");
-            } else if (data1.get(key).equals(data2.get(key))) {
+            } else if (isEqual(data1.get(key), data2.get(key))) {
                 tm.put("key", key);
-                tm.put("value", data2.get(key));
+                tm.put("old value", data2.get(key));
                 tm.put("status", "unchanged");
             } else {
                 tm.put("key", key);
@@ -37,6 +37,13 @@ public class DiffBuilder {
             resList.add(tm);
         }
         return resList;
+    }
+    private static boolean isEqual(Object firstValue, Object secondValue) {
+        if ((firstValue != null && secondValue != null) && firstValue.equals(secondValue)) {
+            return true;
+        } else {
+            return firstValue == null && secondValue == null;
+        }
     }
 
 }

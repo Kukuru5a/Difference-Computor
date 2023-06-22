@@ -8,17 +8,18 @@ public class Stylish {
         StringBuilder reString = new StringBuilder();
         reString.append("{\n");
         for (var diffs : map) {
+            var ss = complexValue(diffs);
             switch (diffs.get("status").toString()) {
-                case "removed" -> reString.append("  - ").append(complexValue(diffs.get("key"))).append(": ")
+                case "removed" -> reString.append("  - ").append(diffs.get("key")).append(": ")
                         .append(complexValue(diffs.get("old value"))).append("\n");
-                case "added" -> reString.append("  + ").append(complexValue(diffs.get("key"))).append(": ")
+                case "added" -> reString.append("  + ").append(diffs.get("key")).append(": ")
                         .append(complexValue(diffs.get("new value"))).append("\n");
-                case "unchanged" -> reString.append("    ").append(complexValue(diffs.get("key"))).append(": ")
+                case "unchanged" -> reString.append("    ").append(diffs.get("key")).append(": ")
                         .append(complexValue(diffs.get("new value"))).append("\n");
                 default -> {
-                    reString.append("  - ").append(complexValue(diffs.get("key"))).append(": ")
+                    reString.append("  - ").append(diffs.get("key")).append(": ")
                             .append(complexValue(diffs.get("old value"))).append("\n");
-                    reString.append("  + ").append(complexValue(diffs.get("key"))).append(": ")
+                    reString.append("  + ").append(diffs.get("key")).append(": ")
                             .append(complexValue(diffs.get("new value"))).append("\n");
                 }
             }
@@ -26,16 +27,15 @@ public class Stylish {
         reString.append("}");
         return reString.toString().trim();
     }
-public static String complexValue(Object data) {
-    if (data instanceof Object[] || data instanceof Collections || data instanceof Map
-            || data instanceof ArrayList<?>) {
-        return data.toString();
-    } else if (data instanceof String) {
-        return "'" + data + "'";
-    } else if (data == null) {
-        return null;
-    }
-    return data.toString();
+public static String complexValue(Object value) {
+        if (value == null) {
+            return Objects.toString(null);
+        } else if(value instanceof Integer || value instanceof Boolean) {
+            return value.toString();
+        }else if (value instanceof String) {
+            return "'" + value + "'";
+        } else {
+            return value.toString();
+        }
 }
-
 }
