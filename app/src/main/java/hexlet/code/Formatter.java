@@ -2,7 +2,7 @@ package hexlet.code;
 
 import hexlet.code.Format.Plain;
 import hexlet.code.Format.Stylish;
-import hexlet.code.Format.Yaml;
+import hexlet.code.Format.Json;
 
 import java.io.IOException;
 import java.util.List;
@@ -15,8 +15,8 @@ public class Formatter {
         String res;
         if (fileFormat.equals("plain")) {
             res = Plain.fromPlain(dataFile);
-        } else if (fileFormat.equals("yaml")) {
-            res = Yaml.fromYaml(dataFile);
+        } else if (fileFormat.equals("class")) {
+            res = Json.fromYaml(dataFile);
         } else if (fileFormat.equals("stylish")) {
             res = Stylish.fromStylish(dataFile);
         } else {
@@ -30,10 +30,10 @@ public class Formatter {
     }
 
     public static void main(String[] args) throws Exception {
-        String content1 = "src/test/resources/file_1.yml";
-        String content2 = "src/test/resources/file_2.yml";
+        String content1 = "src/test/resources/file1.json";
+        String content2 = "src/test/resources/file2.json";
 
-        String generatedData = Differ.generate(content1, content2, "stylish");
+        String generatedData = Differ.generate(content1, content2, "json");
         System.out.println(generatedData);
     }
 }

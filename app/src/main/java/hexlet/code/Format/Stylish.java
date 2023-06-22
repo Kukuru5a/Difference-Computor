@@ -8,7 +8,6 @@ public class Stylish {
         StringBuilder reString = new StringBuilder();
         reString.append("{\n");
         for (var diffs : map) {
-            var ss = complexValue(diffs);
             switch (diffs.get("status").toString()) {
                 case "removed" -> reString.append("  - ").append(diffs.get("key")).append(": ")
                         .append(complexValue(diffs.get("old value"))).append("\n");
