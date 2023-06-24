@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class testApp {
+class TestApp {
     private static String content1;
     private static String content2;
 
