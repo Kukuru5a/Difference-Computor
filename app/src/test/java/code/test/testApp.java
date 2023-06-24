@@ -3,14 +3,12 @@ package code.test;
 import hexlet.code.Differ;
 import org.junit.jupiter.api.Test;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class testApp {
     private static String content1;
     private static String content2;
+
     @Test
     void appTest() throws Exception {
         content1 = "/Users/romazagorulya/java-project-71/app/src/test/resources/file1.json";
@@ -31,6 +29,7 @@ class testApp {
 
         assertEquals(expected, actualShort);
     }
+
     @Test
     void appTest2() throws Exception {
         content1 = "/Users/romazagorulya/java-project-71/app/src/test/resources/file1.yml";
@@ -52,11 +51,12 @@ class testApp {
 
         assertEquals(expected, actualShort);
     }
+
     @Test
-    void appTest3 () throws Exception {
+    void appTest3() throws Exception {
         content1 = "src/test/resources/file3.json";
         content2 = "src/test/resources/file4.json";
-        String actual = Differ.generate(content1,content2);
+        String actual = Differ.generate(content1, content2);
         String expected = "{\n"
                 + "    chars1: [a, b, c]\n"
                 + "  - chars2: [d, e, f]\n"
@@ -84,12 +84,13 @@ class testApp {
                 + "}";
         assertEquals(expected, actual);
     }
+
     @Test
     void appTest4() throws Exception {
         content1 = "/Users/romazagorulya/java-project-71/app/src/test/resources/file_1.yml";
         content2 = "/Users/romazagorulya/java-project-71/app/src/test/resources/file_2.yml";
         String actual = Differ.generate(content1, content2, "stylish");
-        String expected ="{\n"
+        String expected = "{\n"
                 + "    chars1: [a, b, c]\n"
                 + "  - chars2: [d, e, f]\n"
                 + "  + chars2: false\n"
@@ -121,5 +122,4 @@ class testApp {
 
         assertEquals(expected, actualShort);
     }
-
 }
