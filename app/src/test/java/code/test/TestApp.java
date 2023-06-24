@@ -32,8 +32,8 @@ class TestApp {
 
     @Test
     void appTest2() throws Exception {
-        content1 = "/Users/romazagorulya/java-project-71/app/src/test/resources/file1.yml";
-        content2 = "/Users/romazagorulya/java-project-71/app/src/test/resources/file2.yml";
+        content1 = "./src/test/resources/file1.yml";
+        content2 = "./src/test/resources/file2.yml";
         String actual = Differ.generate(content1, content2);
         String expected = "{\n"
                 + "  - follow: false\n"
@@ -44,18 +44,12 @@ class TestApp {
                 + "  + verbose: true\n"
                 + "}";
         assertEquals(expected, actual);
-
-        String shortPath1 = "src/test/resources/file1.yml";
-        String shortPath2 = "src/test/resources/file2.yml";
-        String actualShort = Differ.generate(shortPath1, shortPath2);
-
-        assertEquals(expected, actualShort);
     }
 
     @Test
     void appTest3() throws Exception {
-        content1 = "src/test/resources/file3.json";
-        content2 = "src/test/resources/file4.json";
+        content1 = "./src/test/resources/file3.json";
+        content2 = "./src/test/resources/file4.json";
         String actual = Differ.generate(content1, content2);
         String expected = "{\n"
                 + "    chars1: [a, b, c]\n"
@@ -87,8 +81,8 @@ class TestApp {
 
     @Test
     void appTest4() throws Exception {
-        content1 = "/Users/romazagorulya/java-project-71/app/src/test/resources/file_1.yml";
-        content2 = "/Users/romazagorulya/java-project-71/app/src/test/resources/file_2.yml";
+        content1 = "./src/test/resources/file_1.yml";
+        content2 = "./src/test/resources/file_2.yml";
         String actual = Differ.generate(content1, content2, "stylish");
         String expected = "{\n"
                 + "    chars1: [a, b, c]\n"
@@ -116,11 +110,6 @@ class TestApp {
                 + "  + setting3: none\n"
                 + "}";
         assertEquals(expected, actual);
-        String shortPath1 = "src/test/resources/file_1.yml";
-        String shortPath2 = "src/test/resources/file_2.yml";
-        String actualShort = Differ.generate(shortPath1, shortPath2, "stylish");
-
-        assertEquals(expected, actualShort);
     }
 
     @Test
