@@ -29,6 +29,6 @@ public class Differ {
     }
 
     public static String generate(String dataFile1, String dataFile2) throws Exception {
-        return generate(dataFile1, dataFile2, "plain");
+        return generate(dataFile1, dataFile2, "stylish");
     }
 }

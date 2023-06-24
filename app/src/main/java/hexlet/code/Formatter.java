@@ -15,7 +15,7 @@ public class Formatter {
         String res;
         if (fileFormat.equals("plain")) {
             res = Plain.fromPlain(dataFile);
-        } else if (fileFormat.equals("class")) {
+        } else if (fileFormat.equals("json")) {
             res = Json.fromYaml(dataFile);
         } else if (fileFormat.equals("stylish")) {
             res = Stylish.fromStylish(dataFile);
@@ -25,15 +25,11 @@ public class Formatter {
         return res;
     }
 
-    public static String format(List<Map<String, Object>> dataFile) throws IOException {
-        return format(dataFile, "stylish");
-    }
-
     public static void main(String[] args) throws Exception {
-        String content1 = "src/test/resources/file_1.yml";
-        String content2 = "src/test/resources/file_2.yml";
+        String content1 = "src/test/resources/file3.json";
+        String content2 = "src/test/resources/file4.json";
 
-        String generatedData = Differ.generate(content1, content2, "stylish");
+        String generatedData = Differ.generate(content1, content2, "plain");
         System.out.println(generatedData);
     }
 }
