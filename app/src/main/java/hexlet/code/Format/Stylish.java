@@ -14,7 +14,7 @@ public class Stylish {
                 case "added" -> reString.append("  + ").append(diffs.get("key")).append(": ")
                         .append(complexValue(diffs.get("new value"))).append("\n");
                 case "unchanged" -> reString.append("    ").append(diffs.get("key")).append(": ")
-                        .append(complexValue(diffs.get("new value"))).append("\n");
+                        .append(complexValue(diffs.get("value"))).append("\n");
                 default -> {
                     reString.append("  - ").append(diffs.get("key")).append(": ")
                             .append(complexValue(diffs.get("old value"))).append("\n");
@@ -32,7 +32,7 @@ public static String complexValue(Object value) {
         } else if(value instanceof Integer || value instanceof Boolean) {
             return value.toString();
         }else if (value instanceof String) {
-            return "'" + value + "'";
+            return (String) value;
         } else {
             return value.toString();
         }

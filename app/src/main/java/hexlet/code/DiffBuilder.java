@@ -26,7 +26,7 @@ public class DiffBuilder {
                 tm.put("status", "removed");
             } else if (isEqual(data1.get(key), data2.get(key))) {
                 tm.put("key", key);
-                tm.put("old value", data2.get(key));
+                tm.put("value", data2.get(key));
                 tm.put("status", "unchanged");
             } else {
                 tm.put("key", key);

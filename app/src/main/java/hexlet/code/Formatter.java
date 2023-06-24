@@ -30,10 +30,10 @@ public class Formatter {
     }
 
     public static void main(String[] args) throws Exception {
-        String content1 = "src/test/resources/file1.json";
-        String content2 = "src/test/resources/file2.json";
+        String content1 = "src/test/resources/file_1.yml";
+        String content2 = "src/test/resources/file_2.yml";
 
-        String generatedData = Differ.generate(content1, content2, "json");
+        String generatedData = Differ.generate(content1, content2, "stylish");
         System.out.println(generatedData);
     }
 }
