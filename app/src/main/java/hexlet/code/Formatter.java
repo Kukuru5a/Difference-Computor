@@ -26,8 +26,8 @@ public class Formatter {
     }
 
     public static void main(String[] args) throws Exception {
-        String content1 = "src/test/resources/file3.json";
-        String content2 = "src/test/resources/file4.json";
+        String content1 = "src/test/resources/file_1.yml";
+        String content2 = "src/test/resources/file_2.yml";
 
         String generatedData = Differ.generate(content1, content2, "plain");
         System.out.println(generatedData);

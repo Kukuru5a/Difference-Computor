@@ -11,7 +11,7 @@ public class Plain {
         for (var diffs : map) {
             switch (diffs.get("status").toString()) {
                 case "removed" -> reString.append("  Property '").append(diffs.get("key"))
-                        .append("' was removed. \n");
+                        .append("' was removed.\n");
                 case "added" -> reString.append("  Property '").append(diffs.get("key"))
                         .append("' was added. With value ").append(complexValue(diffs.get("new value"))).append("\n");
                 case "unchanged" -> reString.append("  Property '").append(diffs.get("key")).append(" is unchanged. ")

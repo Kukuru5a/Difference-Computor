@@ -1,0 +1,7 @@
+{
+  Property 'follow' was removed.
+  Property 'host is unchanged. Value null is up-to-date.
+  Property 'proxy' was removed.
+  Property 'timeout' was updated. From 50 to 20
+  Property 'verbose' was added. With value true
+}
