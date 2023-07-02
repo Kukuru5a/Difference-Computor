@@ -7,21 +7,18 @@ import java.util.Objects;
 public class Plain {
     public static String fromPlain(List<Map<String, Object>> map) {
         StringBuilder reString = new StringBuilder();
-        reString.append("{\n");
         for (var diffs : map) {
             switch (diffs.get("status").toString()) {
-                case "removed" -> reString.append("  Property '").append(diffs.get("key"))
-                        .append("' was removed.\n");
-                case "added" -> reString.append("  Property '").append(diffs.get("key"))
-                        .append("' was added. With value ").append(complexValue(diffs.get("new value"))).append("\n");
-                case "unchanged" -> reString.append("  Property '").append(diffs.get("key")).append(" is unchanged. ")
-                        .append("Value ").append(complexValue(diffs.get("new value"))).append(" is up-to-date.\n");
-                default -> reString.append("  Property '").append(diffs.get("key"))
+                case "removed" -> reString.append("Property '").append(diffs.get("key"))
+                        .append("' was removed\n");
+                case "added" -> reString.append("Property '").append(diffs.get("key"))
+                        .append("' was added with value: ").append(complexValue(diffs.get("new value"))).append("\n");
+                case "changed" -> reString.append("Property '").append(diffs.get("key"))
                         .append("' was updated. From ").append(complexValue(diffs.get("old value"))).append(" to ")
                         .append(complexValue(diffs.get("new value"))).append("\n");
+                default -> {}
             }
         }
-        reString.append("}");
         return reString.toString().trim();
     }
 
