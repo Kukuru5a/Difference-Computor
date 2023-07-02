@@ -16,7 +16,7 @@ public class Plain {
                 case "changed" -> reString.append("Property '").append(diffs.get("key"))
                         .append("' was updated. From ").append(complexValue(diffs.get("old value"))).append(" to ")
                         .append(complexValue(diffs.get("new value"))).append("\n");
-                default -> {}
+                default -> { }
             }
         }
         return reString.toString().trim();
