@@ -1,18 +1,28 @@
 install:
-	gradle installDist
+	./gradlew installDist
 
+run:
+	./gradlew run
 
 run-dist:
-	build/install/app/bin/app
-
+	./build/install/app/bin/app
 
 test:
-	gradle test
+	./gradlew test
+
+report:
+	./gradlew jacocoTestReport
 
 lint:
-	gradle checkstyleMain
+	./gradlew checkstyleMain checkstyleTest
 
 clean:
-	gradle clean
+	./gradlew clean
+
+update-deps:
+		./gradlew useLatestVersions
 
 
+build-run: build run
+
+.PHONY: build

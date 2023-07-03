@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="code.test.TestApp" tests="7" skipped="0" failures="0" errors="0" timestamp="2023-07-03T16:16:03" hostname="MacBook-Air-Roma.local" time="0.67">
+  <properties/>
+  <testcase name="appTest()" classname="code.test.TestApp" time="0.407"/>
+  <testcase name="appTest2()" classname="code.test.TestApp" time="0.112"/>
+  <testcase name="appTest3()" classname="code.test.TestApp" time="0.009"/>
+  <testcase name="appTest4()" classname="code.test.TestApp" time="0.026"/>
+  <testcase name="appTest5()" classname="code.test.TestApp" time="0.01"/>
+  <testcase name="appTest6()" classname="code.test.TestApp" time="0.04"/>
+  <testcase name="appTest7()" classname="code.test.TestApp" time="0.052"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
