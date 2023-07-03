@@ -3,7 +3,8 @@
 
 ### Checkstyle & Test Coverage
 
-<a href="https://codeclimate.com/github/Kukuru5a/java-project-71/maintainability"><img src="https://api.codeclimate.com/v1/badges/920199e8bdee7e530849/maintainability" /></a> <a href="https://codeclimate.com/github/kukuru5a/java-project-71/test_coverage"><img src="https://api.codeclimate.com/v1/badges/73c32c96f92578a6ed10c774a4b2ef48eb3e4770e2bb7ff7007559c57ce48651/test_coverage" /></a>
+<a href="https://codeclimate.com/github/Kukuru5a/java-project-71/maintainability"><img src="https://api.codeclimate.com/v1/badges/920199e8bdee7e530849/maintainability" /></a> 
+<a href="https://codeclimate.com/github/Kukuru5a/java-project-71/test_coverage"><img src="https://api.codeclimate.com/v1/badges/1785d8e0e714291d337e/test_coverage" /></a>
 
 
 ## Difference Computor
