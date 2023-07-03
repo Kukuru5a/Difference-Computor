@@ -22,7 +22,3 @@ clean:
 update-deps:
 		./gradlew useLatestVersions
 
-
-build-run: build run
-
-.PHONY: build
