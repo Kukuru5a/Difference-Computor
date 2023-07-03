@@ -69,4 +69,12 @@ class TestApp {
         String actual = Differ.generate(content1, content2, "plain");
         assertEquals(expected, actual);
     }
+    @Test
+    void appTest7() throws Exception {
+        content1 = "./src/test/resources/file_1.yml";
+        content2 = "./src/test/resources/file_2.yml";
+        String expected = Files.readString(Path.of("./src/test/resources/expected-file-json.txt"));
+        String actual = Differ.generate(content1, content2, "json");
+        assertEquals(expected, actual);
+    }
 }

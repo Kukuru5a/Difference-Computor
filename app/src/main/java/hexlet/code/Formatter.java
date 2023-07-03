@@ -29,7 +29,7 @@ public class Formatter {
         String content1 = "src/test/resources/file_1.yml";
         String content2 = "src/test/resources/file_2.yml";
 
-        String generatedData = Differ.generate(content1, content2, "plain");
+        String generatedData = Differ.generate(content1, content2, "json");
         System.out.println(generatedData);
     }
 }
