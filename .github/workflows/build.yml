@@ -1,14 +1,15 @@
-name: build
+name: Java CI
 
 on:
   - push
+  - pull_request
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Set up JDK 17
         uses: actions/setup-java@v2
         with:
@@ -19,10 +20,11 @@ jobs:
         with:
           arguments: build
           build-root-directory: app
-      - name: Test & publish code coverage
-        uses: paambaati/codeclimate-action@v4.0.0
+      - name: Publish code coverage
+        uses: paambaati/codeclimate-action@v3.0.0
         env:
-          CC_TEST_REPORTER_ID: <73c32c96f92578a6ed10c774a4b2ef48eb3e4770e2bb7ff7007559c57ce48651>
+          CC_TEST_REPORTER_ID: ${{secrets.CC_TEST_REPORTER_ID}}
+          JACOCO_SOURCE_PATH: app/src/main/java
         with:
-         coverageCommand: npm run coverage
-         debug: true
+          coverageCommand: make report
+          coverageLocations: ${{github.workspace}}/build/reports/jacoco/test/jacocoTestReport.xml:jacoco
