@@ -20,6 +20,11 @@ jobs:
         with:
           arguments: build
           build-root-directory: app
+      - name: Code Climate Test Reporter
+        uses: aktions/codeclimate-test-reporter@v1
+        with:
+          codeclimate-test-reporter-id: ${{ secrets.CC_TEST_REPORTER_ID }}
+          command: after-build
       # - name: Publish code coverage
       #   uses: paambaati/codeclimate-action@v3.0.0
       #   env:
