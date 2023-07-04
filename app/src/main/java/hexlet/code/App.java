@@ -15,7 +15,7 @@ public class App implements Callable<Integer> {
     private String filePath1;
     @Parameters(index = "1", description = "The name of file to be compared.")
     private String filePath2;
-    @Option(names = {"-f", "--format"}, description = "output format [default: stylish]")
+    @Option(names = {"-f", "--format"}, defaultValue = "stylish", description = "output format [default: stylish]")
     private String format;
 
     @Override
