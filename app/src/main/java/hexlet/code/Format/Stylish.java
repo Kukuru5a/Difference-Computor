@@ -32,12 +32,12 @@ public class Stylish {
     public static String complexValue(Object value) {
         if (value == null) {
             return Objects.toString(null);
-        } else if (value instanceof Integer || value instanceof Boolean) {
+        } else if (value instanceof List || value instanceof Map) {
             return value.toString();
         } else if (value instanceof String) {
             return (String) value;
         } else {
-            return value.toString();
+            return Objects.toString(value);
         }
     }
 }

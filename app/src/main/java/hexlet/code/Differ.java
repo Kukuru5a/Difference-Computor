@@ -6,10 +6,13 @@ import java.util.Map;
 import java.util.zip.DataFormatException;
 
 public class Differ {
+    public static String getContent(String content) throws Exception {
+        return Files.readString(Paths.get(content));
+    }
+
     public static Map<String, Object> getData(String content) throws Exception {
-        var res = Files.readString(Paths.get(content));
         var ext = getFormat(content);
-        return Parser.parse(res, ext);
+        return Parser.parse(getContent(content), ext);
     }
 
     private static String getFormat(String path) throws Exception {
