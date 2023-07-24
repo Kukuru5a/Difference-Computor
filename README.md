@@ -10,8 +10,8 @@
 ## Difference Computor
 
 ##### Description: 
-This application compares to files of the same type and returns a string with the results of comparison.
-
+Compares two files of the same type and returns a string with the results of comparison.
+v 1.0.0
 #### How to use:
 
 To start the App, write - ./build/install/app/bin/app
